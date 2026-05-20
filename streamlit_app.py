@@ -1,29 +1,31 @@
-# Program Sederhana Pembelian Barang
+import streamlit as st
 
-print("=== PROGRAM PEMBELIAN BARANG ===")
+st.title("Program Pembelian Barang")
 
-# Input data barang
-nama_barang = input("Masukkan nama barang : ")
-harga_barang = int(input("Masukkan harga barang : "))
-jumlah_barang = int(input("Masukkan jumlah barang : "))
+# Input
+nama_barang = st.text_input("Masukkan nama barang")
+harga_barang = st.number_input("Masukkan harga barang", min_value=0)
+jumlah_barang = st.number_input("Masukkan jumlah barang", min_value=1)
 
-# Perhitungan total
-total = harga_barang * jumlah_barang
+# Tombol proses
+if st.button("Hitung Total"):
 
-# Diskon sederhana
-if total >= 100000:
-    diskon = total * 0.1
-else:
-    diskon = 0
+    # Perhitungan
+    total = harga_barang * jumlah_barang
 
-# Total akhir
-bayar = total - diskon
+    # Diskon
+    if total >= 100000:
+        diskon = total * 0.1
+    else:
+        diskon = 0
 
-# Output
-print("\n=== STRUK PEMBELIAN ===")
-print("Nama Barang   :", nama_barang)
-print("Harga Barang  :", harga_barang)
-print("Jumlah Barang :", jumlah_barang)
-print("Total Harga   :", total)
-print("Diskon        :", diskon)
-print("Total Bayar   :", bayar)
+    bayar = total - diskon
+
+    # Output
+    st.subheader("Struk Pembelian")
+    st.write("Nama Barang :", nama_barang)
+    st.write("Harga Barang :", harga_barang)
+    st.write("Jumlah Barang :", jumlah_barang)
+    st.write("Total Harga :", total)
+    st.write("Diskon :", diskon)
+    st.write("Total Bayar :", bayar)
