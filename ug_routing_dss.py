@@ -242,3 +242,4 @@ if st.session_state.optimization_result:
         csv_bytes = stop_df.to_csv(index=False).encode("utf-8")
         st.download_button(f"📥 Download CSV Vehicle {route['Vehicle']}", csv_bytes,
                            file_name=f"vehicle_{route['Vehicle']}_stops.csv", mime="text/csv")
+        
